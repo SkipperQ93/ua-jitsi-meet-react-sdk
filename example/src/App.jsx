@@ -193,29 +193,51 @@ const App = () => {
                 JitsiMeeting Demo App
             </h1>
             <JitsiMeeting
-                roomName = { generateRoomName() }
+                roomName = { "USM-TEST-888" }
                 spinner = { renderSpinner }
                 configOverwrite = {{
-                    subject: 'lalalala',
-                    hideConferenceSubject: false
+                    welcomePage: {
+                        disabled: true,
+                    },
+                    prejoinConfig: {
+                        enabled: false,
+                    },
+                    conferenceInfo: {
+                        alwaysVisible: [],
+                    },
+                    toolbarButtons: [
+                    ],
+                    disableInviteFunctions: true,
+                    disableShortcuts: true,
+                    tileView: {
+                        disabled: true,
+                    },
+                    notifications: [],
+                    disableSelfView: true,
+                    enableCalendarIntegration: false,
+                    disableRemoteMute: true,
+                    startWithAudioMuted: true,
+                    remoteVideoMenu: {
+                        disabled: true,
+                    },
+                    hideParticipantsStats: true,
+                    connectionIndicators: {
+                        disabled: true,
+                    },
+                    p2p: {
+                        enabled: false,
+                    },
+                    hideConferenceSubject: true,
+                    hideConferenceTimer: true,
+
+
                 }}
-                lang = 'de'
+                interfaceConfigOverwrite={{
+                }}
+                lang = 'en'
                 onApiReady = { externalApi => handleApiReady(externalApi) }
                 onReadyToClose = { handleReadyToClose }
                 getIFrameRef = { handleJitsiIFrameRef1 } />
-            <JaaSMeeting
-                roomName = { generateRoomName() }
-
-                // Update this with the `8x8.vc` or `stage.8x8.vc` version of interest
-                // and avoid mixing up different domains and release versions
-                // on the same page at the same time, as only the first
-                // external api script will be loaded.
-                // release = 'release-1234'
-
-                useStaging = { true }
-                getIFrameRef = { handleJaaSIFrameRef } />
-            {renderButtons()}
-            {renderNewInstance()}
             {renderLog()}
         </>
     );
